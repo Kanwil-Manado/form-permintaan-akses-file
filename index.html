@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Permintaan Akses File ALco</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="container">
+        <div class="judul-container">
+
+            <img src="https://djpb.kemenkeu.go.id/portal/images/banners/logo_ditjen_perbendaharaan0.png" alt="Logo Djpb">
+
+            <div class="judul">
+                <h1>Formulir Permintaan Akses File</h1>
+                <h5>Silahkan mengisi Formulir untuk dapat mengakses file </h5>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form action="#" class="form-alco">
+                <div class="input-name">
+                    <label>Nama Lengkap</label>
+                    <Input type="text" placeholder="Ketikan Nama Anda"></Input>
+                </div>
+
+                <div class="org-role-container">
+                    <div class="input-organisasi">
+                        <label>Organisasi/Instansi</label>
+                            <select>
+                                <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
+                                <option value="pemerintah-daerah">Pemerintah Daerah</option>
+                                <option value="pemerintah-pusat">Pemerintah Pusat</option>
+                                <option value="swasta">Non Pemrintah/Swasta</option>
+                                <option value="perguruan-tinggi">Perguruan Tinggi</option>
+                                <option value="sekolah">Sekolah</option>
+                                <option value="umum-lainnya">Umum/Lainnya</option>
+                            </select>
+    
+                            <div class="input-nama-org" id="input-lainnya-instansi"  >
+                                <Label>Nama Organisasi/Instansi</Label>
+                                <input type="text" placeholder="Ketikan Organisasi/Instansi Anda">
+                            </div>
+            
+                    </div>
+    
+                    <div class="input-role-container">
+                        <label>Jabatan/Peran</label>
+                        <div class="input-role">
+                            <input type="radio" id="role-pejabat" name="role"  > Pejabat Strategis
+                        </div>
+    
+                        <div class="input-role">
+                            <input type="radio" id="role-akademisi" name="role" > Akademisi
+                        </div>
+    
+                        <div class="input-role">
+                            <input type="radio" id="role-mahasiswa" name="role" > Mahasiswa/Siswa
+                        </div>
+    
+                        <div class="input-role">
+                            <input type="radio" id="other-role" name="role" > Lainnya
+                        </div>
+
+                        <div class="input-role" id="input-other-role" style="display: none;" >
+                            <input type="text" placeholder="Ketikan Jabatan/Peran Anda">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="input-keperluan-role">
+                    <label>Keperluan</label>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-karyatulis" name="role"  > Skripsi/Tesis/Karya Tulis atau sejenisnya
+                    </div>
+
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-bacaan" name="role" > Bacaan/Berita
+                    </div>
+
+                    <div class="input-keperluan">
+                        <input type="radio" id="other-keperluan" name="role" > Lainnya
+                    </div>
+
+                    <div class="input-keperluan" id="input-other-keperluan" style="display: none ;"  >
+                        <input type="text" placeholder="Ketikan Keperluan Anda">
+                    </div>
+                </div>
+
+
+                <div class="input-tahun-file">
+                    <label>Tahun Penerbitan File yang Diakses</label>
+                    <select id="year-dropdown">
+                        <option value="" disabled selected>Pilih Tahun</option>
+                    </select>
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit">Kirim</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+</body>
+</html>

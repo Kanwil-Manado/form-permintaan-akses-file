@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.container {
+    padding: 1rem;
+    position: relative;
+    max-width: 750px;
+    width: 100%;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 32px   rgba(42, 21, 232, 0.7);
+}
+
+.judul-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ddd;
+}
+.judul-container img {
+    width: 15%;
+    height: 15%;
+}
+
+.judul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;                                                              
+}
+
+.judul h1 {
+    color: #0d60ae;
+}
+
+.judul h5 {
+    font-weight: 300;
+}
+
+
+.form-container form {
+    padding: 2rem;
+
+}
+
+
+label {
+    color: #0d60ae;
+    font-weight: 600;
+}
+
+form .input-name input {
+    position: relative;                                                             
+    width: 100%;
+    height: 3rem;
+    outline: none;
+    font-size: 1rem;
+    color: #0d60ae;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 1rem;
+
+}
+
+
+.org-role-container {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.input-organisasi {
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-organisasi label {
+    margin-bottom: 0.5em; /* Jarak antara label dan dropdown */
+}
+
+.input-organisasi select{
+    width: 75%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.input-nama-org {
+    padding: 1rem 0;
+}
+.input-organisasi .input-nama-org input {
+    position: relative;                                                             
+    width: 75%;
+    height: 2.5rem;
+    outline: none;
+    color: #0d60ae;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 0.5rem;
+
+}
+
+#input-other-role input {                                                            
+    width: 130%;
+    height: 2.5rem;
+    outline: none;
+    color: #0d60ae;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem 0.5rem;
+}
+
+.input-role-container {
+    display: flex;
+    flex-direction: column; /* Mengatur elemen-elemen agar tertata secara vertikal */
+}
+
+.input-role {
+    margin-bottom: 10px; /* Memberikan jarak antar elemen radio */
+}
+
+.input-role input[type="radio"] {
+    margin-right: 8px; /* Memberikan jarak antara radio button dan teks */
+    cursor: pointer;
+}
+
+#input-other-keperluan input {                                                            
+    width: 45%;
+    height: 2.5rem;
+    outline: none;
+    color: #0d60ae;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1rem 0.5rem;
+}
+
+.input-keperluan-container {
+    display: flex;
+    flex-direction: column; /* Mengatur elemen-elemen agar tertata secara vertikal */
+}
+
+.input-keperluan {
+    margin-bottom: 10px; /* Memberikan jarak antar elemen radio */
+}
+
+.input-keperluan input[type="radio"] {
+    margin-right: 8px; /* Memberikan jarak antara radio button dan teks */
+    cursor: pointer;
+}
+
+.input-tahun-file {
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-tahun-file label {
+    margin-bottom: 0.5em; /* Jarak antara label dan dropdown */
+}
+
+.input-tahun-file select{
+    width: 75%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.submit-btn {
+    padding-top: 2rem ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit-btn button {
+    width: 30%;
+    background-color: #0d60ae; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    padding: 10px 20px; /* Jarak dalam tombol untuk memperbesar area klik */
+    border: none; /* Menghapus border default tombol */
+    border-radius: 1rem; /* Membuat sudut tombol melengkung */
+    font-size: 16px; /* Mengatur ukuran teks pada tombol */
+    cursor: pointer; /* Mengubah kursor saat di-hover menjadi pointer */
+    transition: background-color 0.3s ease; /* Menambahkan transisi halus untuk perubahan warna */
+}
+
+.submit-btn button:hover {
+    background-color: #0b5394; /* Warna latar belakang saat tombol di-hover */
+}
+
+
+
+
+
+
+
