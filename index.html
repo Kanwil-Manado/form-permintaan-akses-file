@@ -22,13 +22,13 @@
             <form action="#" class="form-alco">
                 <div class="input-name">
                     <label>Nama Lengkap</label>
-                    <Input type="text" placeholder="Ketikan Nama Anda"></Input>
+                    <Input type="text" placeholder="Ketikan Nama Anda" required></Input>
                 </div>
 
                 <div class="org-role-container">
                     <div class="input-organisasi">
                         <label>Organisasi/Instansi</label>
-                            <select>
+                            <select required> 
                                 <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
                                 <option value="pemerintah-daerah">Pemerintah Daerah</option>
                                 <option value="pemerintah-pusat">Pemerintah Pusat</option>
@@ -48,19 +48,19 @@
                     <div class="input-role-container">
                         <label>Jabatan/Peran</label>
                         <div class="input-role">
-                            <input type="radio" id="role-pejabat" name="role"  > Pejabat Strategis
+                            <input type="radio" id="role-pejabat" name="role" required  > Pejabat Strategis
                         </div>
     
                         <div class="input-role">
-                            <input type="radio" id="role-akademisi" name="role" > Akademisi
+                            <input type="radio" id="role-akademisi" name="role" required > Akademisi
                         </div>
     
                         <div class="input-role">
-                            <input type="radio" id="role-mahasiswa" name="role" > Mahasiswa/Siswa
+                            <input type="radio" id="role-mahasiswa" name="role" required > Mahasiswa/Siswa
                         </div>
     
                         <div class="input-role">
-                            <input type="radio" id="other-role" name="role" > Lainnya
+                            <input type="radio" id="other-role" name="role" required> Lainnya
                         </div>
 
                         <div class="input-role" id="input-other-role" style="display: none;" >
@@ -73,15 +73,15 @@
                 <div class="input-keperluan-role">
                     <label>Keperluan</label>
                     <div class="input-keperluan">
-                        <input type="radio" id="keperluan-karyatulis" name="role"  > Skripsi/Tesis/Karya Tulis atau sejenisnya
+                        <input type="radio" id="keperluan-karyatulis" name="role" required > Skripsi/Tesis/Karya Tulis atau sejenisnya
                     </div>
 
                     <div class="input-keperluan">
-                        <input type="radio" id="keperluan-bacaan" name="role" > Bacaan/Berita
+                        <input type="radio" id="keperluan-bacaan" name="role" required > Bacaan/Berita
                     </div>
 
                     <div class="input-keperluan">
-                        <input type="radio" id="other-keperluan" name="role" > Lainnya
+                        <input type="radio" id="other-keperluan" name="role" required > Lainnya
                     </div>
 
                     <div class="input-keperluan" id="input-other-keperluan" style="display: none ;"  >
@@ -92,7 +92,7 @@
 
                 <div class="input-tahun-file">
                     <label>Tahun Penerbitan File yang Diakses</label>
-                    <select id="year-dropdown">
+                    <select id="year-dropdown" required>
                         <option value="" disabled selected>Pilih Tahun</option>
                     </select>
                 </div>
