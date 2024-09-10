@@ -1,93 +1,91 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulir Permintaan Akses File ALco</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <section class="container">
         <div class="judul-container">
-
             <img src="https://djpb.kemenkeu.go.id/portal/images/banners/logo_ditjen_perbendaharaan0.png" alt="Logo Djpb">
-
             <div class="judul">
-                <h1>Formulir Permintaan Akses File</h1>
+                <h1>Formulir Permintaan Akses File ALCo</h1>
                 <h5>Silahkan mengisi Formulir untuk dapat mengakses file </h5>
             </div>
         </div>
 
         <div id="success-message" style="display: none;">
-            Formulir berhasil dikirim !
+            Terima kasih, Formulir berhasil dikirim !
         </div>
 
         <div class="form-container">
             <form name="form-alco" class="form-alco">
                 <div class="input-name">
                     <label>Nama Lengkap</label>
-                    <Input name="nama" type="text" placeholder="Ketikan Nama Anda" required></Input>
+                    <input name="nama" type="text" placeholder="Ketikan Nama Anda" required>
                 </div>
 
                 <div class="org-role-container">
                     <div class="input-organisasi">
                         <label>Organisasi/Instansi</label>
-                            <select name="organisasi" required> 
-                                <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
-                                <option value="pemerintah-daerah">Pemerintah Daerah</option>
-                                <option value="pemerintah-pusat">Pemerintah Pusat</option>
-                                <option value="swasta">Non Pemerintah/Swasta</option>
-                                <option value="perguruan-tinggi">Perguruan Tinggi</option>
-                                <option value="sekolah">Sekolah</option>
-                                <option value="umum-lainnya">Umum/Lainnya</option> 
-                            </select>
-    
-                            <div class="input-nama-org" id="input-lainnya-instansi"  >
-                                <Label>Nama Organisasi/Instansi</Label>
-                                <input name="namaOrganisasi" type="text" placeholder="Ketikan Organisasi/Instansi Anda">
-                            </div>
+                        <select name="organisasi" required> 
+                            <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
+                            <option value="pemerintah-daerah">Pemerintah Daerah</option>
+                            <option value="pemerintah-pusat">Pemerintah Pusat</option>
+                            <option value="swasta">Non Pemerintah/Swasta</option>
+                            <option value="perguruan-tinggi">Perguruan Tinggi</option>
+                            <option value="sekolah">Sekolah</option>
+                            <option value="umum-lainnya">Umum/Lainnya</option> 
+                        </select>
+
+                        <div class="input-nama-org" id="input-lainnya-instansi">
+                            <label>Nama Organisasi/Instansi</label>
+                            <input name="namaOrganisasi" type="text" placeholder="Ketikan Organisasi/Instansi Anda">
+                        </div>
                     </div>
 
                     <div class="input-role-container">
                         <label>Jabatan/Peran</label>
                         <div class="input-role">
-                            <input type="radio" id="role-pejabat" name="jabatanPeran" value="Pejabat Strategis"  > Pejabat Strategis
+                            <input type="radio" id="role-pejabat" name="jabatanPeran" value="Pejabat Strategis"> Pejabat Strategis
                         </div>
-    
                         <div class="input-role">
-                            <input type="radio" id="role-akademisi" name="jabatanPeran" value="Akademisi"  > Akademisi
+                            <input type="radio" id="role-akademisi" name="jabatanPeran" value="Akademisi"> Akademisi
                         </div>
-    
                         <div class="input-role">
-                            <input type="radio" id="role-mahasiswa" name="jabatanPeran" value="Mahasiswa/Siswa" > Mahasiswa/Siswa
+                            <input type="radio" id="role-mahasiswa" name="jabatanPeran" value="Mahasiswa/Siswa"> Mahasiswa/Siswa
                         </div>
-    
-                        <div class="input-other-role">
-                            <h4>Lainnya: </h4>
-                            <input name="jabatanPeran" type="text" placeholder="Jabatan/Peran Anda">
+                        <div class="input-role">
+                            <input type="radio" id="role-lainnya" name="jabatanPeran" value="Lainnya"> Lainnya
+                        </div>
+                        <div id="jabatan-lainnya-container" class="hidden">
+                            <input type="text" id="jabatan-lainnya" name="jabatanPeranLainnya" placeholder="Ketikan Jabatan/Peran Anda">
                         </div>
                     </div>
                 </div>
-
-
 
                 <div class="input-keperluan-role">
                     <label>Keperluan</label>
                     <div class="input-keperluan">
-                        <input type="radio" id="keperluan-karyatulis" name="keperluan" value="Skripsi/Tesis/Karya Tulis/Sejenisnya" required > Skripsi/Tesis/Karya Tulis/Sejenisnya
+                        <input type="radio" id="keperluan-karyatulis" name="keperluan" value="Skripsi/Tesis/Karya Tulis/Sejenisnya" required> Skripsi/Tesis/Karya Tulis/Sejenisnya
                     </div>
-
                     <div class="input-keperluan">
-                        <input type="radio" id="keperluan-bacaan" name="keperluan" value="Bacaan/Berita" required > Bacaan/Berita
+                        <input type="radio" id="keperluan-bacaan" name="keperluan" value="Bacaan/Berita" required> Bacaan/Berita
                     </div>
-
-                    <div class="input-other-keperluan">
-                        <h4>Lainnya :</h4>
-                        <input name="keperluan" type="text" placeholder=" Ketikan Keperluan Anda">
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-lainnya" name="keperluan" value="Lainnya" required> Lainnya
                     </div>
-
+                    <div id="keperluan-lainnya-container" class="hidden">
+                        <input type="text" id="keperluan-lainnya-text" name="keperluanLainnya" placeholder="Ketikan Keperluan Anda">
+                    </div>
                 </div>
-
 
                 <div class="input-tahun-file">
                     <label>Tahun Penerbitan File yang Diakses</label>
@@ -99,45 +97,73 @@
                 <div class="submit-btn">
                     <button type="submit">Kirim</button>
                 </div>
-
-
-
             </form>
-
         </div>
-
     </section>
 
     <script src="main.js"></script>
-
-      <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyVRAzAncb23-iHcJJ1maUkczZMQ7eKoV3ykOCvouHSbrDddfQEVc3XhBT8QZUCP86ekw/exec'
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzXC2CCWLhyszrPaMyNd8CTFYciCYJDUA2cUVS1MLyORm2sMkbAjrep2mPoHdBDWpvxng/exec'
         const form = document.forms['form-alco']
         const successMessage = document.getElementById('success-message')
+
+
+        function toggleCustomInput(radioId, containerId) {
+            const radio = document.getElementById(radioId);
+            const container = document.getElementById(containerId);
+            
+            radio.addEventListener('change', function() {
+                if (this.checked && this.value === 'Lainnya') {
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                }
+            });
+
+
+            const otherRadios = document.querySelectorAll(`input[name="${radio.name}"]:not(#${radioId})`);
+            otherRadios.forEach(otherRadio => {
+                otherRadio.addEventListener('change', function() {
+                    container.classList.add('hidden');
+                });
+            });
+        }
+
+
+        toggleCustomInput('role-lainnya', 'jabatan-lainnya-container');
+        toggleCustomInput('keperluan-lainnya', 'keperluan-lainnya-container');
 
         form.addEventListener('submit', e => {
             e.preventDefault()
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            const formData = new FormData(form);
+
+
+            if (document.getElementById('role-lainnya').checked) {
+                formData.set('jabatanPeran', formData.get('jabatanPeranLainnya'));
+            }
+
+
+            if (document.getElementById('keperluan-lainnya').checked) {
+                formData.set('keperluan', formData.get('keperluanLainnya'));
+            }
+
+            fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
                     console.log('Success!', response)
-
-                    // Tampilkan pesan sukses
                     successMessage.style.display = 'block'
-
-                    // Sembunyikan pesan sukses setelah beberapa detik (opsional)
                     setTimeout(() => {
                         successMessage.style.display = 'none'
                     }, 3000)
-
-                    // Kosongkan form setelah pengiriman
                     form.reset()
+
+                    document.getElementById('jabatan-lainnya-container').classList.add('hidden');
+                    document.getElementById('keperluan-lainnya-container').classList.add('hidden');
                 })
                 .catch(error => {
                     console.error('Error!', error.message)
                 })
         })
     </script>
-      
 </body>
 </html>
