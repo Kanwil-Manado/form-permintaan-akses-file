@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Permintaan Akses File ALco</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="judul-container">
+            <img src="https://djpb.kemenkeu.go.id/portal/images/banners/logo_ditjen_perbendaharaan0.png" alt="Logo Djpb">
+            <div class="judul">
+                <h1>Formulir Permintaan Akses File ALCo</h1>
+                <h5>Silahkan mengisi Formulir untuk dapat mengakses file </h5>
+            </div>
+        </div>
+
+        <div id="success-message" style="display: none;">
+            Terima kasih, Formulir berhasil dikirim !
+        </div>
+
+        <div class="form-container">
+            <form name="form-alco" class="form-alco">
+                <div class="input-name">
+                    <label>Nama Lengkap</label>
+                    <input name="nama" type="text" placeholder="Ketikan Nama Anda" required>
+                </div>
+
+                <div class="org-role-container">
+                    <div class="input-organisasi">
+                        <label>Organisasi/Instansi</label>
+                        <select name="organisasi" required> 
+                            <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
+                            <option value="pemerintah-daerah">Pemerintah Daerah</option>
+                            <option value="pemerintah-pusat">Pemerintah Pusat</option>
+                            <option value="swasta">Non Pemerintah/Swasta</option>
+                            <option value="perguruan-tinggi">Perguruan Tinggi</option>
+                            <option value="sekolah">Sekolah</option>
+                            <option value="umum-lainnya">Umum/Lainnya</option> 
+                        </select>
+
+                        <div class="input-nama-org" id="input-lainnya-instansi">
+                            <label>Nama Organisasi/Instansi</label>
+                            <input name="namaOrganisasi" type="text" placeholder="Ketikan Organisasi/Instansi Anda">
+                        </div>
+                    </div>
+
+                    <div class="input-role-container">
+                        <label>Jabatan/Peran</label>
+                        <div class="input-role">
+                            <input type="radio" id="role-pejabat" name="jabatanPeran" value="Pejabat Strategis"> Pejabat Strategis
+                        </div>
+                        <div class="input-role">
+                            <input type="radio" id="role-akademisi" name="jabatanPeran" value="Akademisi"> Akademisi
+                        </div>
+                        <div class="input-role">
+                            <input type="radio" id="role-mahasiswa" name="jabatanPeran" value="Mahasiswa/Siswa"> Mahasiswa/Siswa
+                        </div>
+                        <div class="input-role">
+                            <input type="radio" id="role-lainnya" name="jabatanPeran" value="Lainnya"> Lainnya
+                        </div>
+                        <div id="jabatan-lainnya-container" class="hidden">
+                            <input type="text" id="jabatan-lainnya" name="jabatanPeranLainnya" placeholder="Ketikan Jabatan/Peran Anda">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-keperluan-role">
+                    <label>Keperluan</label>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-karyatulis" name="keperluan" value="Skripsi/Tesis/Karya Tulis/Sejenisnya" required> Skripsi/Tesis/Karya Tulis/Sejenisnya
+                    </div>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-bacaan" name="keperluan" value="Bacaan/Berita" required> Bacaan/Berita
+                    </div>
+                    <div class="input-keperluan">
+                        <input type="radio" id="keperluan-lainnya" name="keperluan" value="Lainnya" required> Lainnya
+                    </div>
+                    <div id="keperluan-lainnya-container" class="hidden">
+                        <input type="text" id="keperluan-lainnya-text" name="keperluanLainnya" placeholder="Ketikan Keperluan Anda">
+                    </div>
+                </div>
+
+                <div class="input-tahun-file">
+                    <label>Tahun Penerbitan File yang Diakses</label>
+                    <select name="tahunFile" id="year-dropdown" required>
+                        <option value="" disabled selected>Pilih Tahun</option>
+                    </select>
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzXC2CCWLhyszrPaMyNd8CTFYciCYJDUA2cUVS1MLyORm2sMkbAjrep2mPoHdBDWpvxng/exec'
+        const form = document.forms['form-alco']
+        const successMessage = document.getElementById('success-message')
+
+
+        function toggleCustomInput(radioId, containerId) {
+            const radio = document.getElementById(radioId);
+            const container = document.getElementById(containerId);
+            
+            radio.addEventListener('change', function() {
+                if (this.checked && this.value === 'Lainnya') {
+                    container.classList.remove('hidden');
+                } else {
+                    container.classList.add('hidden');
+                }
+            });
+
+
+            const otherRadios = document.querySelectorAll(`input[name="${radio.name}"]:not(#${radioId})`);
+            otherRadios.forEach(otherRadio => {
+                otherRadio.addEventListener('change', function() {
+                    container.classList.add('hidden');
+                });
+            });
+        }
+
+
+        toggleCustomInput('role-lainnya', 'jabatan-lainnya-container');
+        toggleCustomInput('keperluan-lainnya', 'keperluan-lainnya-container');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            const formData = new FormData(form);
+
+
+            if (document.getElementById('role-lainnya').checked) {
+                formData.set('jabatanPeran', formData.get('jabatanPeranLainnya'));
+            }
+
+
+            if (document.getElementById('keperluan-lainnya').checked) {
+                formData.set('keperluan', formData.get('keperluanLainnya'));
+            }
+
+            fetch(scriptURL, { method: 'POST', body: formData })
+                .then(response => {
+                    console.log('Success!', response)
+                    successMessage.style.display = 'block'
+                    setTimeout(() => {
+                        successMessage.style.display = 'none'
+                    }, 3000)
+                    form.reset()
+
+                    document.getElementById('jabatan-lainnya-container').classList.add('hidden');
+                    document.getElementById('keperluan-lainnya-container').classList.add('hidden');
+                })
+                .catch(error => {
+                    console.error('Error!', error.message)
+                })
+        })
+
+        document.addEventListener('DOMContentLoaded', function() {
+        const select = document.getElementById('year-dropdown');
+        const currentYear = new Date().getFullYear();
+        const startYear = 2000;
+
+        for (let year = currentYear; year >= startYear; year--) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            select.appendChild(option);
+        }
+        });
+    </script>
+</body>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.container {
+    padding: 1rem;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 0 32px   rgba(42, 21, 232, 0.7);
+}
+
+/* JUDUL */
+.judul-container {
+    display: flex;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ddd;
+}
+.judul-container img {
+    width: 15%;
+    height: 15%;
+}
+
+.judul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;                                                              
+}
+
+.judul h1 {
+    color: #0d60ae;
+}
+
+.judul h5 {
+    font-weight: 300;
+}
+
+/* FORM */
+
+.form-container form {
+    padding: 2rem;
+
+}
+
+
+label {
+    color: #0d60ae;
+    font-weight: 600;
+}
+
+
+input:focus, select:focus, textarea:focus {
+    border-color: #0d60ae;
+    box-shadow: 0 0 5px rgba(13, 96, 174, 0.7); 
+    outline: none; 
+}
+
+
+form .input-name input {
+    position: relative;                                                             
+    width: 100%;
+    height: 3rem;
+    outline: none;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 1rem;
+
+}
+
+
+.org-role-container {
+    display: flex;
+    margin-top: 2rem;
+}
+
+.input-organisasi {
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-organisasi label {
+    margin-bottom: 0.5em; 
+}
+
+.input-organisasi select{
+    width: 75%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.input-nama-org {
+    padding: 1.5rem 0;
+}
+.input-organisasi .input-nama-org input {
+    position: relative;                                                             
+    width: 75%;
+    height: 2.5rem;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0 0.5rem;
+
+}
+
+
+.input-role-container {
+    margin-bottom: 20px;
+}
+
+.input-role {
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: center;
+}
+
+.input-role input[type="radio"] {
+    margin-right: 8px; 
+    cursor: pointer;
+}
+
+
+#jabatan-lainnya {
+    border: none;
+    border-bottom: 1px solid #0d60ae;
+    outline: none;
+    margin-left: 1.4rem;
+    width: 100%;
+}
+
+
+
+.input-keperluan-container {
+    display: flex;
+    flex-direction: column; 
+}
+
+.input-keperluan {
+    margin-bottom: .5rem;
+}
+
+.input-keperluan input[type="radio"] {
+    margin-right: 8px; 
+    cursor: pointer;
+}
+
+
+#keperluan-lainnya-text {
+    border: none;
+    border-bottom: 1px solid #0d60ae;
+    outline: none;
+    margin-left: 1.5rem;
+}
+
+.input-tahun-file {
+    display: flex;
+    flex-direction: column; 
+    
+}
+
+.input-tahun-file label {
+    margin:  1rem 0.5em 0.5em 0 ; 
+}
+
+.input-tahun-file select{
+    width: 100%; 
+    height: 2.5rem;
+    padding: 0.5rem;
+}
+
+.submit-btn {
+    padding: 2rem ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.submit-btn button {
+    width: 50%;
+    background-color: #0d60aef4; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 3rem; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.submit-btn button:hover {
+    background-color: white;
+    color: #0d60ae;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(13, 96, 174, 0.7); 
+}
+
+#success-message {
+    width: 100%;
+    background-color:rgba(0, 128, 0, 0.25);
+    padding: 1rem;
+    color: black;
+    border-bottom: 8px solid green;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: ease-in-out 3s;
+
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    body {
+        font-size: 80%;
+    }
+
+
+    .judul-container img {
+        width: 15%;
+    }
+
+
+
+    .input-role-container,
+    .input-keperluan-container {
+        margin-top: 0;
+    }
+
+    .input-role,
+    .input-keperluan {
+        margin-bottom: 0.5rem;
+    }
+
+    input::placeholder {
+    font-size: 75%;
+    }
+
+    form .input-name input {
+        padding: 1rem ;
+        height: 1rem;
+        width: 100%;
+    }
+
+    .org-role-container {
+        gap: 3rem;
+    }
+
+    #input-other-role input {
+        width: 70%;
+        padding: 1rem ;
+        height: 1rem;
+    }
+
+    #input-other-keperluan input {
+        padding: 1rem ;
+        height: 1rem;
+    }
+
+ 
+    .input-organisasi select option {
+        font-size: .7rem;
+        width: 75%; 
+        height: 1rem;
+        padding: 0.5rem;
+    }
+
+    .input-organisasi select {
+        font-size: .7rem ;
+    }
+
+    .input-tahun-file select{
+        width: 100%; 
+        height: 2rem;
+        padding: 0.5rem;
+        font-size: .7rem;
+    }
+
+    
+}
+
+@media (max-width: 480px) {
+
+    body{
+        font-size: 75%;
+    }
+
+    .judul-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .judul-container img {
+        width: 20%;
+    }
+
+    .org-role-container {
+        flex-direction: column;
+    }
+
+    input::placeholder {
+        font-size: 70%;
+        }
+
+    #input-other-role input {
+        width: 100%;
+        padding: .7rem ;
+        height: 1rem;
+        }
+    
+        #input-other-keperluan input {
+            width: 80%;
+            padding: .7rem ;
+            height: 1rem;
+        }
+
+        form .input-name input {
+            padding: .7rem ;
+            height: 1rem;
+            width: 100%;
+        }
+    
+        .input-organisasi .input-nama-org input {
+            padding: .7rem ;
+            height: 1rem;
+            width: 100%;
+        }
+    
+        .input-organisasi select {
+            font-size: .7rem ;
+            width: 100%;
+            padding: .5rem;
+            height: 2rem;
+        }
+
+
+
+}
+</style>
+</html>

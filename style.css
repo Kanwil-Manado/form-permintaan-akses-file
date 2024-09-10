@@ -136,25 +136,13 @@ form .input-name input {
     cursor: pointer;
 }
 
-.input-other-role {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    column-gap: 6px;
-    margin-left: 1.4rem;
-    cursor: pointer;
 
-}
-.input-other-role h4 {
-    color: black;
-    font-weight: 400;
-
-}
-
-.input-other-role input {
+#jabatan-lainnya {
     border: none;
     border-bottom: 1px solid #0d60ae;
     outline: none;
+    margin-left: 1.4rem;
+    width: 100%;
 }
 
 
@@ -173,21 +161,12 @@ form .input-name input {
     cursor: pointer;
 }
 
-.input-other-keperluan {
-    display: flex;
-    column-gap: 6px;
-    cursor: pointer;
-}
-.input-other-keperluan h4 {
-    margin-left: 1.5rem;
-    color: black;
-    font-weight: 400;
-}
 
-.input-other-keperluan input {
+#keperluan-lainnya-text {
     border: none;
     border-bottom: 1px solid #0d60ae;
     outline: none;
+    margin-left: 1.5rem;
 }
 
 .input-tahun-file {
