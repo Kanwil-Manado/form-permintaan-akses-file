@@ -18,13 +18,14 @@ body {
 .container {
     padding: 1rem;
     position: relative;
-    max-width: 750px;
+    max-width: 800px;
     width: 100%;
     background: white;
     border-radius: 1rem;
     box-shadow: 0 0 32px   rgba(42, 21, 232, 0.7);
 }
 
+/* JUDUL */
 .judul-container {
     display: flex;
     gap: 2rem;
@@ -50,6 +51,7 @@ body {
     font-weight: 300;
 }
 
+/* FORM */
 
 .form-container form {
     padding: 2rem;
@@ -62,13 +64,20 @@ label {
     font-weight: 600;
 }
 
+
+input:focus, select:focus, textarea:focus {
+    border-color: #0d60ae;
+    box-shadow: 0 0 5px rgba(13, 96, 174, 0.7); 
+    outline: none; 
+}
+
+
 form .input-name input {
     position: relative;                                                             
     width: 100%;
     height: 3rem;
     outline: none;
     font-size: 1rem;
-    color: #0d60ae;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 0 1rem;
@@ -88,7 +97,7 @@ form .input-name input {
 }
 
 .input-organisasi label {
-    margin-bottom: 0.5em; /* Jarak antara label dan dropdown */
+    margin-bottom: 0.5em; 
 }
 
 .input-organisasi select{
@@ -98,66 +107,87 @@ form .input-name input {
 }
 
 .input-nama-org {
-    padding: 1rem 0;
+    padding: 1.5rem 0;
 }
 .input-organisasi .input-nama-org input {
     position: relative;                                                             
     width: 75%;
     height: 2.5rem;
     outline: none;
-    color: #0d60ae;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 0 0.5rem;
 
 }
 
-#input-other-role input {                                                            
-    width: 130%;
-    height: 2.5rem;
-    outline: none;
-    color: #0d60ae;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1rem 0.5rem;
-}
 
 .input-role-container {
-    display: flex;
-    flex-direction: column; /* Mengatur elemen-elemen agar tertata secara vertikal */
+    margin-bottom: 20px;
 }
 
 .input-role {
-    margin-bottom: 10px; /* Memberikan jarak antar elemen radio */
+    margin-bottom: 10px; 
+    display: flex;
+    align-items: center;
 }
 
 .input-role input[type="radio"] {
-    margin-right: 8px; /* Memberikan jarak antara radio button dan teks */
+    margin-right: 8px; 
     cursor: pointer;
 }
 
-#input-other-keperluan input {                                                            
-    width: 45%;
-    height: 2.5rem;
-    outline: none;
-    color: #0d60ae;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 1rem 0.5rem;
+.input-other-role {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 6px;
+    margin-left: 1.4rem;
+    cursor: pointer;
+
 }
+.input-other-role h4 {
+    color: black;
+    font-weight: 400;
+
+}
+
+.input-other-role input {
+    border: none;
+    border-bottom: 1px solid #0d60ae;
+    outline: none;
+}
+
+
 
 .input-keperluan-container {
     display: flex;
-    flex-direction: column; /* Mengatur elemen-elemen agar tertata secara vertikal */
+    flex-direction: column; 
 }
 
 .input-keperluan {
-    margin-bottom: 10px; /* Memberikan jarak antar elemen radio */
+    margin-bottom: .5rem;
 }
 
 .input-keperluan input[type="radio"] {
-    margin-right: 8px; /* Memberikan jarak antara radio button dan teks */
+    margin-right: 8px; 
     cursor: pointer;
+}
+
+.input-other-keperluan {
+    display: flex;
+    column-gap: 6px;
+    cursor: pointer;
+}
+.input-other-keperluan h4 {
+    margin-left: 1.5rem;
+    color: black;
+    font-weight: 400;
+}
+
+.input-other-keperluan input {
+    border: none;
+    border-bottom: 1px solid #0d60ae;
+    outline: none;
 }
 
 .input-tahun-file {
@@ -167,38 +197,180 @@ form .input-name input {
 }
 
 .input-tahun-file label {
-    margin-bottom: 0.5em; /* Jarak antara label dan dropdown */
+    margin:  1rem 0.5em 0.5em 0 ; 
 }
 
 .input-tahun-file select{
-    width: 75%; 
+    width: 100%; 
     height: 2.5rem;
     padding: 0.5rem;
 }
 
 .submit-btn {
-    padding-top: 2rem ;
+    padding: 2rem ;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .submit-btn button {
-    width: 30%;
-    background-color: #0d60ae; /* Warna latar belakang tombol */
-    color: white; /* Warna teks tombol */
-    padding: 10px 20px; /* Jarak dalam tombol untuk memperbesar area klik */
-    border: none; /* Menghapus border default tombol */
-    border-radius: 1rem; /* Membuat sudut tombol melengkung */
-    font-size: 16px; /* Mengatur ukuran teks pada tombol */
-    cursor: pointer; /* Mengubah kursor saat di-hover menjadi pointer */
-    transition: background-color 0.3s ease; /* Menambahkan transisi halus untuk perubahan warna */
+    width: 50%;
+    background-color: #0d60aef4; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 3rem; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
 }
 
 .submit-btn button:hover {
-    background-color: #0b5394; /* Warna latar belakang saat tombol di-hover */
+    background-color: white;
+    color: #0d60ae;
+    font-weight: 700;
+    box-shadow: 0 0 16px rgba(13, 96, 174, 0.7); 
 }
 
+#success-message {
+    width: 100%;
+    background-color:rgba(0, 128, 0, 0.25);
+    padding: 1rem;
+    color: black;
+    border-bottom: 8px solid green;
+    border-radius: 4px;
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: ease-in-out 3s;
 
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    body {
+        font-size: 80%;
+    }
+
+
+    .judul-container img {
+        width: 15%;
+    }
+
+
+
+    .input-role-container,
+    .input-keperluan-container {
+        margin-top: 0;
+    }
+
+    .input-role,
+    .input-keperluan {
+        margin-bottom: 0.5rem;
+    }
+
+    input::placeholder {
+    font-size: 75%;
+    }
+
+    form .input-name input {
+        padding: 1rem ;
+        height: 1rem;
+        width: 100%;
+    }
+
+    .org-role-container {
+        gap: 3rem;
+    }
+
+    #input-other-role input {
+        width: 70%;
+        padding: 1rem ;
+        height: 1rem;
+    }
+
+    #input-other-keperluan input {
+        padding: 1rem ;
+        height: 1rem;
+    }
+
+ 
+    .input-organisasi select option {
+        font-size: .7rem;
+        width: 75%; 
+        height: 1rem;
+        padding: 0.5rem;
+    }
+
+    .input-organisasi select {
+        font-size: .7rem ;
+    }
+
+    .input-tahun-file select{
+        width: 100%; 
+        height: 2rem;
+        padding: 0.5rem;
+        font-size: .7rem;
+    }
+
+    
+}
+
+@media (max-width: 480px) {
+
+    body{
+        font-size: 75%;
+    }
+
+    .judul-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .judul-container img {
+        width: 20%;
+    }
+
+    .org-role-container {
+        flex-direction: column;
+    }
+
+    input::placeholder {
+        font-size: 70%;
+        }
+
+    #input-other-role input {
+        width: 100%;
+        padding: .7rem ;
+        height: 1rem;
+        }
+    
+        #input-other-keperluan input {
+            width: 80%;
+            padding: .7rem ;
+            height: 1rem;
+        }
+
+        form .input-name input {
+            padding: .7rem ;
+            height: 1rem;
+            width: 100%;
+        }
+    
+        .input-organisasi .input-nama-org input {
+            padding: .7rem ;
+            height: 1rem;
+            width: 100%;
+        }
+    
+        .input-organisasi select {
+            font-size: .7rem ;
+            width: 100%;
+            padding: .5rem;
+            height: 2rem;
+        }
+
+
+
+}
 
 
 

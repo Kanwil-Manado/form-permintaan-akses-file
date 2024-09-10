@@ -18,81 +18,80 @@
             </div>
         </div>
 
+        <div id="success-message" style="display: none;">
+            Formulir berhasil dikirim !
+        </div>
+
         <div class="form-container">
-            <form action="#" class="form-alco">
+            <form name="form-alco" class="form-alco">
                 <div class="input-name">
                     <label>Nama Lengkap</label>
-                    <Input type="text" placeholder="Ketikan Nama Anda" required></Input>
+                    <Input name="nama" type="text" placeholder="Ketikan Nama Anda" required></Input>
                 </div>
 
                 <div class="org-role-container">
                     <div class="input-organisasi">
                         <label>Organisasi/Instansi</label>
-                            <select required> 
+                            <select name="organisasi" required> 
                                 <option value="" disabled selected>Pilih Organisasi/Instansi Anda</option>
                                 <option value="pemerintah-daerah">Pemerintah Daerah</option>
                                 <option value="pemerintah-pusat">Pemerintah Pusat</option>
-                                <option value="swasta">Non Pemrintah/Swasta</option>
+                                <option value="swasta">Non Pemerintah/Swasta</option>
                                 <option value="perguruan-tinggi">Perguruan Tinggi</option>
                                 <option value="sekolah">Sekolah</option>
-                                <option value="umum-lainnya">Umum/Lainnya</option>
+                                <option value="umum-lainnya">Umum/Lainnya</option> 
                             </select>
     
                             <div class="input-nama-org" id="input-lainnya-instansi"  >
                                 <Label>Nama Organisasi/Instansi</Label>
-                                <input type="text" placeholder="Ketikan Organisasi/Instansi Anda">
+                                <input name="namaOrganisasi" type="text" placeholder="Ketikan Organisasi/Instansi Anda">
                             </div>
-            
                     </div>
-    
+
                     <div class="input-role-container">
                         <label>Jabatan/Peran</label>
                         <div class="input-role">
-                            <input type="radio" id="role-pejabat" name="role" required  > Pejabat Strategis
+                            <input type="radio" id="role-pejabat" name="jabatanPeran" value="Pejabat Strategis"  > Pejabat Strategis
                         </div>
     
                         <div class="input-role">
-                            <input type="radio" id="role-akademisi" name="role" required > Akademisi
+                            <input type="radio" id="role-akademisi" name="jabatanPeran" value="Akademisi"  > Akademisi
                         </div>
     
                         <div class="input-role">
-                            <input type="radio" id="role-mahasiswa" name="role" required > Mahasiswa/Siswa
+                            <input type="radio" id="role-mahasiswa" name="jabatanPeran" value="Mahasiswa/Siswa" > Mahasiswa/Siswa
                         </div>
     
-                        <div class="input-role">
-                            <input type="radio" id="other-role" name="role" required> Lainnya
-                        </div>
-
-                        <div class="input-role" id="input-other-role" style="display: none;" >
-                            <input type="text" placeholder="Ketikan Jabatan/Peran Anda">
+                        <div class="input-other-role">
+                            <h4>Lainnya: </h4>
+                            <input name="jabatanPeran" type="text" placeholder="Jabatan/Peran Anda">
                         </div>
                     </div>
                 </div>
+
 
 
                 <div class="input-keperluan-role">
                     <label>Keperluan</label>
                     <div class="input-keperluan">
-                        <input type="radio" id="keperluan-karyatulis" name="role" required > Skripsi/Tesis/Karya Tulis atau sejenisnya
+                        <input type="radio" id="keperluan-karyatulis" name="keperluan" value="Skripsi/Tesis/Karya Tulis/Sejenisnya" required > Skripsi/Tesis/Karya Tulis/Sejenisnya
                     </div>
 
                     <div class="input-keperluan">
-                        <input type="radio" id="keperluan-bacaan" name="role" required > Bacaan/Berita
+                        <input type="radio" id="keperluan-bacaan" name="keperluan" value="Bacaan/Berita" required > Bacaan/Berita
                     </div>
 
-                    <div class="input-keperluan">
-                        <input type="radio" id="other-keperluan" name="role" required > Lainnya
+                    <div class="input-other-keperluan">
+                        <h4>Lainnya :</h4>
+                        <input name="keperluan" type="text" placeholder=" Ketikan Keperluan Anda">
                     </div>
 
-                    <div class="input-keperluan" id="input-other-keperluan" style="display: none ;"  >
-                        <input type="text" placeholder="Ketikan Keperluan Anda">
-                    </div>
                 </div>
 
 
                 <div class="input-tahun-file">
                     <label>Tahun Penerbitan File yang Diakses</label>
-                    <select id="year-dropdown" required>
+                    <select name="tahunFile" id="year-dropdown" required>
                         <option value="" disabled selected>Pilih Tahun</option>
                     </select>
                 </div>
@@ -101,10 +100,44 @@
                     <button type="submit">Kirim</button>
                 </div>
 
+
+
             </form>
 
         </div>
 
     </section>
+
+    <script src="main.js"></script>
+
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyVRAzAncb23-iHcJJ1maUkczZMQ7eKoV3ykOCvouHSbrDddfQEVc3XhBT8QZUCP86ekw/exec'
+        const form = document.forms['form-alco']
+        const successMessage = document.getElementById('success-message')
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    console.log('Success!', response)
+
+                    // Tampilkan pesan sukses
+                    successMessage.style.display = 'block'
+
+                    // Sembunyikan pesan sukses setelah beberapa detik (opsional)
+                    setTimeout(() => {
+                        successMessage.style.display = 'none'
+                    }, 3000)
+
+                    // Kosongkan form setelah pengiriman
+                    form.reset()
+                })
+                .catch(error => {
+                    console.error('Error!', error.message)
+                })
+        })
+    </script>
+      
 </body>
 </html>
